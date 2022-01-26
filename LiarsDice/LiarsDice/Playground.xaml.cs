@@ -19,12 +19,13 @@ namespace LiarsDice
     /// </summary>
     public partial class Playground : Window
     {
+        //run code in a different window
         MainWindow wndMain = Application.Current.MainWindow as MainWindow;
 
         static UInt16[] PlayerDice = new UInt16[5];
         static UInt16[] EnemyDice = new UInt16[5];
 
-        bool rollDiceBool = false; //Hier werde ich drüberfallen - Marc 20.01.2022
+        bool rollDiceBool = false;
         bool continueBool = false;
         bool bluffBool = false;
 
@@ -43,6 +44,7 @@ namespace LiarsDice
         public Playground()
         {
             InitializeComponent();
+
             UseShopItems();
             PlaygroundBGDefault.Source = new BitmapImage(new Uri(@"Stuff/" + BackgroundName + ".jpg", UriKind.Relative));
             ChangeYears();
@@ -50,9 +52,13 @@ namespace LiarsDice
             Chat.Text = "Round started..\n";
         }
 
+        /// <summary>
+        /// Get the DiceName and BackgroundName from the Lists in MainWindow
+        /// </summary>
         private void UseShopItems()
         {
             List<string> myItems = new List<string>();
+
             if (wndMain != null)
             {
                 myItems = wndMain.ReturnShopItem();
@@ -103,6 +109,9 @@ namespace LiarsDice
 
         //***************************************************
 
+        /// <summary>
+        /// Reset all Values to play another round
+        /// </summary>
         private void NewGame()
         {
             for(int index = 0; index < 5; index++)
@@ -219,8 +228,7 @@ namespace LiarsDice
         }
 
 
-        //Buttons for Dice-Input
-        //--------------------------------------------------------------------------------
+        //--------------------- Buttons for Dice-Input ---------------------------------------------
         private void Amount1_Click(object sender, RoutedEventArgs e)
         {
             EnableAmoutButtons();
@@ -353,25 +361,15 @@ namespace LiarsDice
         //--------------------------------------------------------------------------------
         //___________ Player-Round _______________________________________________________
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            BackgroundContinue.Source = new BitmapImage(new Uri(@"Stuff/ButtonDisabled.png", UriKind.Relative));
-            BackgroundBluff.Source = new BitmapImage(new Uri(@"Stuff/ButtonDisabled.png", UriKind.Relative));
-            DisableAmoutButtons();
-            DisableDiceEyeButtons();
-        }
-
         private void RolltheDice_Click(object sender, RoutedEventArgs e)
         {
-            
-
-            //RolltheDice.IsEnabled = false;
             if (!rollDiceBool)
             {
+                Random rdm = new Random();
                 rollDiceBool = true;
                 UInt16 nextDice;
-                Random rdm = new Random();
-
+                
+                //generates random dice rolls
                 for (int index = 0; index < 5; index++)
                 {
                     nextDice = Convert.ToUInt16(rdm.Next(1, 6));
@@ -404,10 +402,12 @@ namespace LiarsDice
             {
                 if (myCallAmount != 0 && myCallEyes != 0)
                 {
+                    //Definition of a correct dice call
                     if ((myCallAmount > SupremeCallAmount && myCallEyes >= SupremeCallEyes) || (myCallAmount >= SupremeCallAmount && myCallEyes > SupremeCallEyes))
                     {
                         SupremeCallAmount = myCallAmount;
                         SupremeCallEyes = myCallEyes;
+
                         continueBool = false;
                         BackgroundContinue.Source = new BitmapImage(new Uri(@"Stuff/ButtonDisabled.png", UriKind.Relative));
                         DisableAmoutButtons();
@@ -416,12 +416,12 @@ namespace LiarsDice
                     }
                     else
                     {
-                        MessageBox.Show("Zu niedrige Würfelanzahl oder Würfelaugenzahl");
+                        MessageBox.Show("Diceamout or Diceeyes are to low");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Bitte Würfelanzahl und Würfelaugen eingeben");
+                    MessageBox.Show("Please Insert Diceamount or Diceeyes");
                 }
             }
         }
@@ -471,7 +471,6 @@ namespace LiarsDice
                     if (wndMain.CheckAccountYears() == 1)
                     {
                         MessageBox.Show("\t\tYou beat the Game\n\n You are free to go!\n");
-                        //ggf. reward
                     }
                 }
                 if (Convert.ToBoolean(ShouldWindowClose.IsChecked))
@@ -497,7 +496,7 @@ namespace LiarsDice
             int counter = 0;
             Random rdm = new Random();
 
-
+            //calculate if KI should play on or check the result
             randomNumber = rdm.Next(0, 100);
             if(SupremeCallAmount <= 4)
             {
@@ -511,8 +510,8 @@ namespace LiarsDice
 
             if (randomNumber >= possibility)
             {
-                //entscheidung ob er es leich überbieten könnte
-                if (SupremeCallAmount == 1 || SupremeCallAmount == 2) //KI schwach
+                //decision if KI could easily call more
+                if (SupremeCallAmount == 1 || SupremeCallAmount == 2) //KI weak
                 {
                     for (int index = 0; index < 5; index++)
                     {
@@ -541,7 +540,7 @@ namespace LiarsDice
                         bluff = false;
                     }
                 }
-                else if (SupremeCallAmount == 3) //KI mittel
+                else if (SupremeCallAmount == 3) //KI medium
                 {
                     for (int index = 0; index < 5; index++)
                     {
@@ -585,7 +584,7 @@ namespace LiarsDice
                     }
 
                 }
-                else if (SupremeCallAmount == 4) //KI mittel
+                else if (SupremeCallAmount == 4) //KI strong
                 {
                     for (int index = 0; index < 5; index++)
                     {
@@ -632,7 +631,7 @@ namespace LiarsDice
                     }
 
                 }
-                else if (SupremeCallAmount == 5) // KI schwer
+                else if (SupremeCallAmount == 5) // KI xtream
                 {
                     for (int index = 0; index < 5; index++)
                     {
@@ -684,7 +683,7 @@ namespace LiarsDice
                     }
 
                 }
-                else if (SupremeCallAmount == 6 || SupremeCallAmount == 7) //KI überlegt mit eigenen würfel ob ergebniss möglich: sehr schwer
+                else if (SupremeCallAmount == 6 || SupremeCallAmount == 7) //KI xtream strong
                 {
                     for (int index = 0; index < 5; index++)
                     {
@@ -734,7 +733,7 @@ namespace LiarsDice
                         bluff = true;
                     }
                 }
-                else if (SupremeCallAmount > 7) //KI überlegt mit eigenen würfel ob ergebniss möglich: sehr schwer
+                else if (SupremeCallAmount > 7) //KI impossible
                 {
                     for (int index = 0; index < 5; index++)
                     {
@@ -804,6 +803,7 @@ namespace LiarsDice
 
             Random rdm = new Random();
 
+            //calculating own dice
             for (int index = 0; index < 5; index++)
             {
                 if (EnemyDice[index] == 1)
@@ -832,7 +832,7 @@ namespace LiarsDice
                 }
             }
 
-            //Sort Dices
+            //sort dice
             List<int> CounterList = new List<int>();
             CounterList.Add(counter1);
             CounterList.Add(counter2);
@@ -844,7 +844,7 @@ namespace LiarsDice
             CounterList.Sort();
             counter = CounterList.Last();
 
-            //Set Dice Eyes
+            //set DiceEys
             if (counter1 == counter)
             {
                 enemyCallEyes = 1;
@@ -870,6 +870,7 @@ namespace LiarsDice
                 enemyCallEyes = 6;
             }
 
+            //Should KI lie completly or tell nearly the truth
             randomNumber = rdm.Next(0, 100);
             if (randomNumber < 90)
             {
@@ -932,6 +933,8 @@ namespace LiarsDice
 
         private void EnemyRound()
         {
+            Random rdm = new Random();
+            int randomNumber;
             bool bluff = false;
             bool correct = false;
             int counter = 0;
@@ -939,8 +942,6 @@ namespace LiarsDice
 
             //Enemy decides if you bluff
             bluff = BluffOrNoBluffCalculator();
-
-            //TODO: erkennt den Bluff bei 10x1 nicht
 
             if (!bluff)
             {
@@ -950,7 +951,7 @@ namespace LiarsDice
                     correct = CreateEnemyCall();
                     stopTheLoop++;
 
-                    if(stopTheLoop == 1000000)
+                    if(stopTheLoop == 1000000) //stoping KI loop
                     {
                         correct = true;
                         bluff = true;
@@ -960,6 +961,24 @@ namespace LiarsDice
 
                 if (!bluff)
                 {
+                    randomNumber = rdm.Next(0, 4);
+                    switch (randomNumber)
+                    {
+                        case 0:
+                            ChatGoingDownEnemy();
+                            break;
+                        case 1:
+                            ChatGoodMoveEnemy();
+                            break;
+                        case 2:
+                            ChatThanksEnemy();
+                            break;
+                        case 3:
+                            ChatWatchEnemy();
+                            break;
+                    }
+                    
+
                     //End enemy round
                     ChangeEnemyCall();
                     MyDiceAmount.Text = "";
@@ -994,7 +1013,6 @@ namespace LiarsDice
                 if (counter >= SupremeCallAmount)
                 {
                     //Player won
-                    //TODO: Amount of Years
                     deductYears();
                     MessageBox.Show("*** Enemy calls BLUFF ***\n\n Are you a liar?");
                     MessageBox.Show("You WON!!!\n\n *** You are a Truth-teller!! ***\n\n - 10 Years");
@@ -1002,8 +1020,6 @@ namespace LiarsDice
                 else
                 {
                     //Enemy won
-                    //TODO: Enemy insults
-                    //TODO: Amount of Years
                     addYears();
                     MessageBox.Show("*** Enemy calls BLUFF ***\n\n Are you a liar?");
                     MessageBox.Show("You LOST!!!\n\n ××× You are a filthy LIAR!! ×××\n\n + 10 Years");
@@ -1019,7 +1035,6 @@ namespace LiarsDice
                     if (wndMain.CheckAccountYears() == 1)
                     {
                         MessageBox.Show("\t\tYou beat the Game\n\n You are free to go!\n");
-                        //ggf. reward
                     }
                 }
                 if (Convert.ToBoolean(ShouldWindowClose.IsChecked))
@@ -1060,29 +1075,8 @@ namespace LiarsDice
                     Chat.Text = Chat.Text + "You: Thanks a LOT!\n";
                     break;
             }
-            randomNumber = rnd.Next(0, 100);
-            if(randomNumber < 60)
-            {
-                randomNumber = rnd.Next(0, 4);
-                switch (randomNumber)
-                {
-                    case 0:
-                        Chat.Text = Chat.Text + "Enemy: Arrrgh!\n";
-                        break;
-                    case 1:
-                        Chat.Text = Chat.Text + "Enemy: You will see!\n";
-                        break;
-                    case 2:
-                        Chat.Text = Chat.Text + "Enemy: F*ck!\n";
-                        break;
-                    case 3:
-                        Chat.Text = Chat.Text + "Enemy: *silence*\n";
-                        break;
-                }
-            }
+            ChatThanksEnemy();
         }
-
-       
 
         private void ChatGoingDown_Click(object sender, RoutedEventArgs e)
         {
@@ -1105,31 +1099,8 @@ namespace LiarsDice
                     Chat.Text = Chat.Text + "You: Not even in a million!\n";
                     break;
             }
-            randomNumber = rnd.Next(0, 100);
-            if (randomNumber < 60)
-            {
-                randomNumber = rnd.Next(0, 4);
-                switch (randomNumber)
-                {
-                    case 0:
-                        Chat.Text = Chat.Text + "Enemy: Don't do it!\n";
-                        break;
-                    case 1:
-                        Chat.Text = Chat.Text + "Enemy: You have no idea!\n";
-                        break;
-                    case 2:
-                        Chat.Text = Chat.Text + "Enemy: You will see!\n";
-                        break;
-                    case 3:
-                        Chat.Text = Chat.Text + "Enemy: Hrgnh!\n";
-                        break;
-                }
-            }
-        }
-        private void Chat_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Chat.ScrollToEnd();
-        }
+            ChatGoingDownEnemy();
+        }  
 
         private void ChatWatch_Click(object sender, RoutedEventArgs e)
         {
@@ -1152,26 +1123,7 @@ namespace LiarsDice
                     Chat.Text = Chat.Text + "You: You better watch out!\n";
                     break;
             }
-            randomNumber = rnd.Next(0, 100);
-            if (randomNumber < 60)
-            {
-                randomNumber = rnd.Next(0, 4);
-                switch (randomNumber)
-                {
-                    case 0:
-                        Chat.Text = Chat.Text + "Enemy: Im blind, WTF!\n";
-                        break;
-                    case 1:
-                        Chat.Text = Chat.Text + "Enemy: I see no man!\n";
-                        break;
-                    case 2:
-                        Chat.Text = Chat.Text + "Enemy: *stares intensely*!\n";
-                        break;
-                    case 3:
-                        Chat.Text = Chat.Text + "Enemy: *Eye pops out*!\n";
-                        break;
-                }
-            }
+            ChatWatchEnemy();
         }
 
         private void ChatGoodMove_Click(object sender, RoutedEventArgs e)
@@ -1195,6 +1147,91 @@ namespace LiarsDice
                     Chat.Text = Chat.Text + "You: gg!\n";
                     break;
             }
+            ChatGoodMoveEnemy();
+        }
+
+        private void ChatThanksEnemy()
+        {
+            Random rnd = new Random();
+            int randomNumber;
+            randomNumber = rnd.Next(0, 100);
+            if (randomNumber < 60)
+            {
+                randomNumber = rnd.Next(0, 4);
+                switch (randomNumber)
+                {
+                    case 0:
+                        Chat.Text = Chat.Text + "Enemy: Arrrgh!\n";
+                        break;
+                    case 1:
+                        Chat.Text = Chat.Text + "Enemy: You will see!\n";
+                        break;
+                    case 2:
+                        Chat.Text = Chat.Text + "Enemy: F*ck!\n";
+                        break;
+                    case 3:
+                        Chat.Text = Chat.Text + "Enemy: *silence*\n";
+                        break;
+                }
+            }
+        }
+
+        private void ChatGoingDownEnemy()
+        {
+            Random rnd = new Random();
+            int randomNumber;
+            randomNumber = rnd.Next(0, 100);
+            if (randomNumber < 60)
+            {
+                randomNumber = rnd.Next(0, 4);
+                switch (randomNumber)
+                {
+                    case 0:
+                        Chat.Text = Chat.Text + "Enemy: Don't do it!\n";
+                        break;
+                    case 1:
+                        Chat.Text = Chat.Text + "Enemy: You have no idea!\n";
+                        break;
+                    case 2:
+                        Chat.Text = Chat.Text + "Enemy: You will see!\n";
+                        break;
+                    case 3:
+                        Chat.Text = Chat.Text + "Enemy: Hrgnh!\n";
+                        break;
+                }
+            }
+        }
+
+        private void ChatWatchEnemy()
+        {
+            Random rnd = new Random();
+            int randomNumber;
+            randomNumber = rnd.Next(0, 100);
+            if (randomNumber < 60)
+            {
+                randomNumber = rnd.Next(0, 4);
+                switch (randomNumber)
+                {
+                    case 0:
+                        Chat.Text = Chat.Text + "Enemy: Im blind, WTF!\n";
+                        break;
+                    case 1:
+                        Chat.Text = Chat.Text + "Enemy: I see no man!\n";
+                        break;
+                    case 2:
+                        Chat.Text = Chat.Text + "Enemy: *stares intensely*\n";
+                        break;
+                    case 3:
+                        Chat.Text = Chat.Text + "Enemy: *Eye pops out*\n";
+                        break;
+                }
+            }
+        }
+
+        private void ChatGoodMoveEnemy()
+        {
+            Random rnd = new Random();
+            int randomNumber;
             randomNumber = rnd.Next(0, 100);
             if (randomNumber < 60)
             {
@@ -1215,11 +1252,22 @@ namespace LiarsDice
                         break;
                 }
             }
-
         }
 
         //==============================================================================
 
+        private void Chat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Chat.ScrollToEnd();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            BackgroundContinue.Source = new BitmapImage(new Uri(@"Stuff/ButtonDisabled.png", UriKind.Relative));
+            BackgroundBluff.Source = new BitmapImage(new Uri(@"Stuff/ButtonDisabled.png", UriKind.Relative));
+            DisableAmoutButtons();
+            DisableDiceEyeButtons();
+        }
 
     }
 }

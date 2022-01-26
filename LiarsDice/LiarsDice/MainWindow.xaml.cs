@@ -31,10 +31,13 @@ namespace LiarsDice
             InitializeComponent(); 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Window_Activated(object sender, EventArgs e)
         {
-
+            MyYears.Text = "";
+            MyYears.Text = Convert.ToString(myAccount.GetYears());
         }
+
+        //=========== Player Input ====================================================================================================
 
         private void Rules_Click(object sender, RoutedEventArgs e)
         {
@@ -67,58 +70,10 @@ namespace LiarsDice
             _myPlayground.ShowDialog();
         }
 
-        public int GetAccount()
-        {
-            return myAccount.GetYears();
-        }
-
-        public void DeductAccountYears()
-        {
-            myAccount.DeductYears();
-        }
-
-        public void AddAccountYears()
-        {
-            myAccount.AddYears();
-        }
-
-        public int CheckAccountYears()
-        {
-            return myAccount.Check();
-        }
-
-        public void AddAccountYearsShop(int amount)
-        {
-            myAccount.AddYearsShop(amount);
-        }
-
-        private void Window_Activated(object sender, EventArgs e)
-        {
-            MyYears.Text = "";
-            MyYears.Text = Convert.ToString(myAccount.GetYears());
-        }
-
         private void Shop_Click(object sender, RoutedEventArgs e)
         {
             Shop _myShop = new Shop();
             _myShop.ShowDialog();
-        }
-
-
-        public void RefreshShopLists(List<bool> ShopList, List<string> ShopItem)
-        {
-            myShopList = ShopList;
-            myShopItem = ShopItem;
-        }
-
-        public List<bool> ReturnShopList()
-        {
-            return myShopList;
-        }
-
-        public List<string> ReturnShopItem()
-        {
-            return myShopItem;
         }
 
         private void SaveGame_Click(object sender, RoutedEventArgs e)
@@ -129,7 +84,10 @@ namespace LiarsDice
                 StreamWriter sw;
                 sw = new StreamWriter(dateiname, false);
 
+                //Writes all different Lists into one String/Textdata
+
                 sw.Write(Convert.ToString(myAccount.GetYears()) + ",");
+
                 sw.Flush();
                 for (int i = 0; i < myShopList.Count(); i++)
                 {
@@ -147,7 +105,7 @@ namespace LiarsDice
             }
             else
             {
-                MessageBox.Show("Saving not possible!");
+                MessageBox.Show("Saving not possible!\n Open Shop and try again");
             }
         }
 
@@ -165,9 +123,11 @@ namespace LiarsDice
                     Console.WriteLine("ich splitte nun..");
                     Char delimiter = ',';
                     String[] substring = line.Split(delimiter);
+
                     myShopList.Clear();
                     myShopItem.Clear();
 
+                    //inserts different substrings where they belong
                     myAccount.SetYears(Convert.ToInt32(substring[0]));
 
                     myShopList.Add(Convert.ToBoolean(substring[1]));
@@ -207,5 +167,59 @@ namespace LiarsDice
                 sr.Close();
             }
         }
+
+        //===============================================================================================================
+
+        //**************** Accountency **********************
+        public int GetAccount()
+        {
+            return myAccount.GetYears();
+        }
+
+        public void DeductAccountYears()
+        {
+            myAccount.DeductYears();
+        }
+
+        public void AddAccountYears()
+        {
+            myAccount.AddYears();
+        }
+
+        /// <summary>
+        /// Checks wether Years value is <= 0 or > 100
+        /// </summary>
+        /// <returns>
+        /// -1 if Years > 100
+        ///  1 if Years <=  0
+        ///  else 0
+        /// </returns>
+        public int CheckAccountYears()
+        {
+            return myAccount.Check();
+        }
+
+        public void AddAccountYearsShop(int amount)
+        {
+            myAccount.AddYearsShop(amount);
+        }
+
+        //***************************************************
+
+        public void RefreshShopLists(List<bool> ShopList, List<string> ShopItem)
+        {
+            myShopList = ShopList;
+            myShopItem = ShopItem;
+        }
+
+        public List<bool> ReturnShopList()
+        {
+            return myShopList;
+        }
+
+        public List<string> ReturnShopItem()
+        {
+            return myShopItem;
+        }     
     }
 }

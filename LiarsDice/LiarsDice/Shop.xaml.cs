@@ -21,7 +21,6 @@ namespace LiarsDice
     {
         MainWindow wndMain = Application.Current.MainWindow as MainWindow;
 
-
         private string DiceName = "White";
         private string BGName = "PlaygroundBG";
 
@@ -52,10 +51,6 @@ namespace LiarsDice
         bool BuyQuatersBGClick = false;
         bool UseQuatersBGClick = false;
         bool QuatersBGBought = false;
-
-        //TODO: Liste aus Bool an Mainwindow übergeben/holen
-        //TODO: Auswerten der Liste in Init
-        //TODO: Strings BG und Dicename an Mainwindow und dann an Playground übegenben
 
         private List<bool> ToList()
         {
@@ -100,11 +95,6 @@ namespace LiarsDice
         public Shop()
         {
             InitializeComponent();
-            //Init funktion für use buttons / buy... weil spielladen
-            //Funktion für speicherdaten laden dies das
-            //Vergisst was gekauft wurde beim fensterschließen
-            //ggf. static oder ins mainwindow übergeben (als liste beim fensterschließen)
-
 
             InitShop();
 
@@ -116,6 +106,9 @@ namespace LiarsDice
             ChangeYears();
         }
 
+        /// <summary>
+        /// Gets Lists from MainWindow and uses those
+        /// </summary>
         private void InitShop()
         {
             List<bool> ShopList = new List<bool>();
@@ -201,10 +194,6 @@ namespace LiarsDice
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            //Variablen an MainWindow übergeben
-            //Dicename und BackgroundName
-            //Bool Variablen als liste
-
             if (wndMain != null)
             {
                 wndMain.RefreshShopLists(ToList(), ToListItem());

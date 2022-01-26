@@ -1,7 +1,6 @@
 C:\UserData\z00479sx\OneDrive - Siemens Energy\Documents\Ausbildung\C#WPF\Projekt\LiarsDice\LiarsDice\bin\Debug\LiarsDice.exe.config
 C:\UserData\z00479sx\OneDrive - Siemens Energy\Documents\Ausbildung\C#WPF\Projekt\LiarsDice\LiarsDice\bin\Debug\LiarsDice.exe
 C:\UserData\z00479sx\OneDrive - Siemens Energy\Documents\Ausbildung\C#WPF\Projekt\LiarsDice\LiarsDice\bin\Debug\LiarsDice.pdb
-C:\UserData\z00479sx\OneDrive - Siemens Energy\Documents\Ausbildung\C#WPF\Projekt\LiarsDice\LiarsDice\obj\Debug\LiarsDice.csprojAssemblyReference.cache
 C:\UserData\z00479sx\OneDrive - Siemens Energy\Documents\Ausbildung\C#WPF\Projekt\LiarsDice\LiarsDice\obj\Debug\MainWindow.g.cs
 C:\UserData\z00479sx\OneDrive - Siemens Energy\Documents\Ausbildung\C#WPF\Projekt\LiarsDice\LiarsDice\obj\Debug\Playground.g.cs
 C:\UserData\z00479sx\OneDrive - Siemens Energy\Documents\Ausbildung\C#WPF\Projekt\LiarsDice\LiarsDice\obj\Debug\Shop.g.cs
