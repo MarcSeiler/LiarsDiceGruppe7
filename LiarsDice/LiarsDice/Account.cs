@@ -8,7 +8,7 @@ namespace LiarsDice
 {
     public class Account
     {
-        private int AmountOfYears = 10;
+        private int AmountOfYears = 80;
 
         public void DeductYears()
         {
