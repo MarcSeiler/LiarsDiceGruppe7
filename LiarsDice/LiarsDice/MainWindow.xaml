@@ -1,0 +1,56 @@
+﻿<Window x:Class="LiarsDice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LiarsDice"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowState="Maximized" ResizeMode="CanResize" MinHeight="450" MinWidth="800" Activated="Window_Activated">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="793*" />
+            <ColumnDefinition Width="0"/>
+
+        </Grid.ColumnDefinitions>
+        <Image Name="BackgroundMainWindow" Source="Stuff/PlayBoardDefault.jpg" Stretch="Fill" Grid.ColumnSpan="2" />
+        <Image Name="LogoBG" Grid.Column="1" Height="265" MinHeight="265" Width="300" MinWidth="300" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/Logo.jpg" Margin="270,13,264,148"/>
+        <Image Name="BGPlayGame" Grid.Column="1" Height="200" MinHeight="200" MaxHeight="350" MaxWidth="250" MinWidth="150" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/ButtonPlank.png" Margin="270,238,276,-17" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-5.112"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="SaveGameBG" Height="50" MinHeight="50" MaxHeight="150" Width="150" MinWidth="150" MaxWidth="250" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/MenuPlank.png" Margin="19,59,618,312" Grid.Column="1" />
+        <Image Name="LoadGameBG" Height="50" MinHeight="50" MaxHeight="150" Width="150" MinWidth="150" MaxWidth="250" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/MenuPlank.png" Margin="22,109,621,262" Grid.Column="1" />
+        <Image Name="RulesBG" Height="50" MinHeight="50" MaxHeight="150" Width="150" MinWidth="150" MaxWidth="250" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/MenuPlank.png" Margin="22,164,621,207" Grid.Column="1" />
+        <Image Name="CloseGameBG" Height="50" MinHeight="50" MaxHeight="250" Width="150" MinWidth="150" MaxWidth="350" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/MenuPlank.png" Margin="22,307,621,64" Grid.Column="1" />
+        <Image Name="ShopBG" Height="200" MinHeight="200" MaxHeight="250" Width="200" MinWidth="200" MaxWidth="250" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/ShopPlank.jpg" Margin="605,250,-12,-29" Grid.Column="1" Grid.ColumnSpan="2" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Height="90" MinHeight="90" MaxHeight="140" Width="105" MinWidth="105" MaxWidth="155" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/ShopTreasure.png" Margin="613,188,75,143" Grid.Column="1" />
+        <Image Height="50" MinHeight="50" MaxHeight="100" Width="190" MinWidth="190" MaxWidth="240" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Source="Stuff/YearPlank.png" Margin="603,0,0,371" Grid.Column="1" />
+
+
+        <Button Name="SaveGame" FontSize="20" FontFamily="Cambria" Foreground="White" Background="Transparent"  BorderBrush="Transparent" Content="Save Game" Grid.Column="1" HorizontalAlignment="Stretch" Margin="33,65,630,321" VerticalAlignment="Stretch" Width="130" MinWidth="130" Height="35" MinHeight="35" Click="SaveGame_Click"/>
+        <Button Name="LoadGames" FontSize="20" FontFamily="Cambria" Foreground="White" Background="Transparent"  BorderBrush="Transparent" Content="Load Game" Grid.Column="1" HorizontalAlignment="Stretch" Margin="33,115,630,271" VerticalAlignment="Stretch" Width="130" Height="35" Click="LoadGames_Click"/>
+        <Button Name="Rules"     FontSize="20" FontFamily="Cambria" Foreground="Orange" Background="Transparent"  BorderBrush="Transparent" Content="Rules" Grid.Column="1" HorizontalAlignment="Stretch" Margin="33,172,630,214" VerticalAlignment="Stretch" Width="130" Height="35" Click="Rules_Click"/>
+        <Button Name="CloseGame"  FontSize="20" FontFamily="Cambria" Foreground="White" Background="Transparent" BorderBrush="Transparent"  Content="Close Game" Grid.Column="1" HorizontalAlignment="Stretch" Margin="33,312,630,74" VerticalAlignment="Stretch" Width="130" Height="35" Click="CloseGame_Click"/>
+        <Button Name="PlayGame" FontWeight="Bold"  FontSize="25" FontFamily="Cambria" Foreground="White" Background="Transparent" BorderBrush="Transparent" Content="Play Game" Grid.Column="1" HorizontalAlignment="Stretch" Margin="322,303,321,70" VerticalAlignment="Stretch" Width="150" Height="48" Click="PlayGame_Click"/>
+        <Button Name="Shop"  VerticalContentAlignment="Top" FontWeight="Bold"  FontSize="35" FontFamily="Algerian" Foreground="White" Background="Transparent" BorderBrush="Transparent" Content="Shop" Grid.Column="1" HorizontalAlignment="Stretch" Margin="612,115,75,151" VerticalAlignment="Stretch" Width="106" Height="155" RenderTransformOrigin="0.5,0.411" Click="Shop_Click"/>
+        <TextBox IsReadOnly="True" Name="MyYears" FontSize="20" FontFamily="Cambria" Foreground="White" Background="Transparent"  BorderBrush="Transparent" Grid.Column="1" HorizontalAlignment="Stretch" Margin="614,13,129,368" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" Height="40" Width="50" RenderTransformOrigin="0.5,0.5"/>
+        <Label Name="YearLable" Content="Years" FontSize="20" FontFamily="Cambria" Foreground="White" Background="Transparent"  BorderBrush="Transparent" Grid.Column="1" HorizontalAlignment="Stretch" Margin="669,8,62,381" VerticalAlignment="Stretch" Height="32" Width="62"/>
+
+    </Grid>
+</Window>

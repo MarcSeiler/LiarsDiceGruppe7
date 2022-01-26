@@ -1,0 +1,151 @@
+﻿<Window x:Class="LiarsDice.Playground"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LiarsDice"
+        mc:Ignorable="d"
+        Title="Playground" Height="450" Width="800" WindowState="Maximized" ResizeMode="CanResize" MinHeight="450" MinWidth="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="0"/>
+
+        </Grid.ColumnDefinitions>
+        <Image Name="PlaygroundBGDefault"   Stretch="Fill" Source="Stuff/PlaygroundBG.jpg" Grid.ColumnSpan="2"/>
+        <Image Name="BackgroundChat1"       HorizontalAlignment="Stretch" MinHeight="70" Height="70" VerticalAlignment="Stretch" MinWidth="150" Width="150" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="12,276,632,75" Grid.Column="1"/>
+        <Image Name="BackgroundChat2"       HorizontalAlignment="Stretch" MinHeight="70" Height="70" VerticalAlignment="Stretch" MinWidth="150" Width="150" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="12,341,632,10" Grid.Column="1"/>
+        <Image Name="BackgroundChat3"       HorizontalAlignment="Stretch" MinHeight="70" Height="70" VerticalAlignment="Stretch" MinWidth="70" Width="70" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="14,309,710,42" Grid.Column="1"/>
+        <Image Name="BackgroundChat4"       HorizontalAlignment="Stretch" MinHeight="70" Height="70" VerticalAlignment="Stretch" MinWidth="70" Width="70" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="88,309,636,42" Grid.Column="1"/>
+        <Image Name="BackgroundRollDice"    HorizontalAlignment="Stretch" MinHeight="145" Height="145" VerticalAlignment="Stretch" MinWidth="192" Width="192" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="598,145,4,131" Grid.Column="1"/>
+        <Image Name="BackgroundBluff"       HorizontalAlignment="Stretch" MinHeight="145" Height="145" VerticalAlignment="Stretch" MinWidth="192" Width="192" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="598,219,4,57" Grid.Column="1"/>
+        <Image Name="BackgroundContinue"    HorizontalAlignment="Stretch" MinHeight="145" Height="145" VerticalAlignment="Stretch" MinWidth="192" Width="192" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="598,289,4,-13" Grid.Column="1"/>
+        <Image Name="BackgroundDiceAmount"  HorizontalAlignment="Stretch" MinHeight="70" Height="70" VerticalAlignment="Stretch" MinWidth="357" Width="357" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="224,270,212,81" Grid.Column="1"/>
+        <Image Name="BackgroundDiceEyes"    HorizontalAlignment="Stretch" MinHeight="70" Height="70" VerticalAlignment="Stretch" MinWidth="245" Width="245" Stretch="Fill" Source="Stuff/ChatButton.png" Margin="280,309,269,42" Grid.Column="1"/>
+        <Image Name="BackgroundEnemyCall"   HorizontalAlignment="Stretch" MinHeight="35" Height="35" VerticalAlignment="Stretch" MinWidth="195" Width="195" Stretch="Fill" Source="Stuff/ShowStuff.jpg" Margin="304,253,294,133" Grid.Column="1"/>
+        <Image Name="BackgroundMyCall"      HorizontalAlignment="Stretch" MinHeight="35" Height="35" VerticalAlignment="Stretch" MinWidth="195" Width="195" Stretch="Fill" Source="Stuff/ShowStuff.jpg" Margin="304,365,294,21" Grid.Column="1"/>
+        <Image Name="BackgroundYears"       HorizontalAlignment="Stretch" MinHeight="35" Height="35" VerticalAlignment="Stretch" MinWidth="195" Width="195" Stretch="Fill" Source="Stuff/ShowStuff.jpg" Margin="596,11,2,375" Grid.Column="1"/>
+        <Image Name="IconYears"             HorizontalAlignment="Stretch" MinHeight="35" Height="35" VerticalAlignment="Stretch" MinWidth="66" Width="66" Stretch="Fill" Source="Stuff/YearSymbol.png" Margin="726,11,2,375" Grid.Column="1"/>
+
+
+        <Rectangle Opacity="0.7" Height="240" Width="170" Fill="Gray" HorizontalAlignment="Stretch" Margin="224,11,400,170" VerticalAlignment="Stretch" Grid.Column="1"/>
+        <Rectangle Opacity="0.7" Height="240" Width="170" Fill="Gray" HorizontalAlignment="Stretch" Margin="412,11,212,170" VerticalAlignment="Stretch" Grid.Column="1"/>
+
+
+
+
+
+
+        <Button Name="ChatGoingDown" Height="22" Width="130" Content="You're going down" FontSize="15" FontFamily="Cambria" Foreground="LightGray" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="20,299,644,100" VerticalAlignment="Stretch" Grid.Column="1" Click="ChatGoingDown_Click"/>
+        <Button Name="ChatWatch" Height="22" Width="56" Content="Watch it" FontSize="15" FontFamily="Cambria" Foreground="LightGray" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="96,332,644,67" VerticalAlignment="Stretch" Grid.Column="1" Click="ChatWatch_Click"/>
+        <Button Name="ChatThanks" Height="22" Width="56" Content="Thanks" FontSize="15" FontFamily="Cambria" Foreground="LightGray" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="20,332,718,67" VerticalAlignment="Stretch" Grid.Column="1" Click="ChatThanks_Click"/>
+        <Button Name="ChatGoodMove" Height="22" Width="130" Content="Good Move" FontSize="15" FontFamily="Cambria" Foreground="LightGray" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="20,364,644,35" VerticalAlignment="Stretch" Grid.Column="1" Click="ChatGoodMove_Click"/>
+        <TextBox Name="Chat" Height="275" Width="150" Background="Gray" Opacity="0.7" HorizontalAlignment="Stretch" Margin="12,10,632,136" TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.Column="1" TextChanged="Chat_TextChanged"/>
+
+        <TextBox Name="EnemyDiceAmount" Height="28" Width="84" IsReadOnly="True" Text="" FontSize="25" FontFamily="Cambria" Foreground="White" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="404,257,306,136" TextWrapping="Wrap" VerticalAlignment="Stretch" RenderTransformOrigin="0.56,0.964" Grid.Column="1"/>
+        <Label Content="Enemy Call:" Height="33" Width="86" FontSize="15" Foreground="White"  HorizontalAlignment="Stretch" Margin="312,257,396,131" VerticalAlignment="Stretch" Grid.Column="1"/>
+
+        <TextBox Name="MyDiceAmount" Height="28" Width="84" IsReadOnly="True" Text="" FontSize="25" FontFamily="Cambria" Foreground="White" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="398,368,312,25" TextWrapping="Wrap" VerticalAlignment="Stretch" RenderTransformOrigin="0.56,0.964" Grid.Column="1"/>
+        <Label Content="My Call:" Height="33" Width="62" FontSize="15" Foreground="White"  HorizontalAlignment="Stretch" Margin="322,368,410,20" VerticalAlignment="Stretch" Grid.Column="1"/>
+
+        <TextBox Name="MyYears" Height="28" Width="58" IsReadOnly="True" Text="100" FontSize="25" FontFamily="Cambria" Foreground="White" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="600,15,136,378" TextWrapping="Wrap" VerticalAlignment="Stretch" RenderTransformOrigin="0.56,0.964" Grid.Column="1"/>
+        <Label Content="Years" Height="42" Width="72" FontSize="25" Foreground="White"  HorizontalAlignment="Stretch" Margin="648,9,74,370" VerticalAlignment="Stretch" Grid.Column="1"/>
+
+        <Label Content="Your Dice:" Height="24" Width="60" FontSize="10" Opacity="0.7" Foreground="White"  HorizontalAlignment="Stretch" Margin="224,12,516,380" VerticalAlignment="Stretch" Grid.Column="1"/>
+        <Label Content="Enemy Dice:" Height="24" Width="70"  FontSize="10" Opacity="0.7" Foreground="White"  HorizontalAlignment="Stretch" Margin="412,12,312,385" VerticalAlignment="Stretch" Grid.Column="1"/>
+
+
+        <Button Name="RolltheDice" Height="46" Width="166" Content="Roll the Dice" FontSize="25" FontFamily="Cambria" Foreground="LightGray" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="606,192,22,184" VerticalAlignment="Stretch" Click="RolltheDice_Click" Grid.Column="1"/>
+        <Button Name="Bluff" Height="46" Width="166" Content="KI-Bluff" FontSize="25" FontFamily="Cambria" Foreground="LightGray" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="606,267,22,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Bluff_Click"/>
+        <Button Name="Continue" Height="46" Width="166" Content="Continue" FontSize="25" FontFamily="Cambria" Foreground="LightGray" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Stretch" Margin="608,336,20,39" VerticalAlignment="Stretch" Grid.Column="1" Click="Continue_Click"/>
+
+        <Button Name="Amount1" Height="18" Width="20" Content="1" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="280,295,494,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount1_Click"/>
+        <Button Name="Amount2" Height="18" Width="20" Content="2" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="305,295,469,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount2_Click"/>
+        <Button Name="Amount3" Height="18" Width="20" Content="3" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="330,295,444,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount3_Click"/>
+        <Button Name="Amount4" Height="18" Width="20" Content="4" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="354,295,420,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount4_Click"/>
+        <Button Name="Amount5" Height="18" Width="20" Content="5" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="379,295,395,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount5_Click"/>
+        <Button Name="Amount6" Height="18" Width="20" Content="6" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="404,295,370,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount6_Click"/>
+        <Button Name="Amount7" Height="18" Width="20" Content="7" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="430,295,344,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount7_Click"/>
+        <Button Name="Amount8" Height="18" Width="20" Content="8" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="454,295,320,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount8_Click"/>
+        <Button Name="Amount9" Height="18" Width="20" Content="9" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="480,295,294,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount9_Click"/>
+        <Button Name="Amount10" Height="18" Width="20" Content="10" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="504,295,270,108" VerticalAlignment="Stretch" Grid.Column="1" Click="Amount10_Click"/>
+
+        <Button Name="DiceEye1" Height="18" Width="20" Content="I" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="322,334,452,69" VerticalAlignment="Stretch" Grid.Column="1" Click="DiceEye1_Click"/>
+        <Button Name="DiceEye2" Height="18" Width="20" Content="II" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="350,334,424,69" VerticalAlignment="Stretch" Grid.Column="1" Click="DiceEye2_Click"/>
+        <Button Name="DiceEye3" Height="18" Width="20" Content="III" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="378,334,396,69" VerticalAlignment="Stretch" Grid.Column="1" Click="DiceEye3_Click"/>
+        <Button Name="DiceEye4" Height="18" Width="20" Content="IV" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="406,334,368,69" VerticalAlignment="Stretch" Grid.Column="1" Click="DiceEye4_Click"/>
+        <Button Name="DiceEye5" Height="18" Width="20" Content="V" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="434,334,340,69" VerticalAlignment="Stretch" Grid.Column="1" Click="DiceEye5_Click"/>
+        <Button Name="DiceEye6" Height="18" Width="20" Content="VI" Background="Gray" FontFamily="Cambria" Foreground="White" HorizontalAlignment="Stretch" Margin="462,334,312,69" VerticalAlignment="Stretch" Grid.Column="1" Click="DiceEye6_Click"/>
+
+        <Image Name="My1Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="238,35,494,324" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-6.227"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="My2Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="322,28,410,331" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" Grid.Column="1"/>
+        <Image Name="My3Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="306,102,426,257" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-10.332"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="My4Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="241,172,492,187" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="9.555"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="My5Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="322,175,410,184" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" Grid.Column="1"/>
+
+        <Image Name="Enemey1Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="420,41,312,318" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" Grid.Column="1"/>
+        <Image Name="Enemey2Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="498,24,236,335" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-13.21"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="Enemey3Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="504,100,228,259" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" Grid.Column="1"/>
+        <Image Name="Enemey4Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="428,156,304,203" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-15.93"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Name="Enemey5Dice" Width="62" Height="62" HorizontalAlignment="Stretch" Margin="510,180,223,179" VerticalAlignment="Stretch" Source="Stuff/GoldQuestionmark.png" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="13.858"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <CheckBox Name="ShouldWindowClose" FontSize="12" Height="20" Width="200" Foreground="White" Grid.Column="1" Content="Keep Window open after Round?" HorizontalAlignment="Stretch" Margin="596,56,0,345" VerticalAlignment="Stretch"/>
+
+
+
+    </Grid>
+</Window>
