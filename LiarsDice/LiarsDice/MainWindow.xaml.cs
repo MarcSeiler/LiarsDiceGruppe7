@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+// Gruppe 7: Moritz Popp, Fabian Mayer, Marc Seiler
+
 namespace LiarsDice
 {
     /// <summary>
