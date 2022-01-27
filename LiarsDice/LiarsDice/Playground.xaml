@@ -143,7 +143,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <CheckBox Name="ShouldWindowClose" FontSize="12" Height="20" Width="200" Foreground="White" Grid.Column="1" Content="Keep Window open after Round?" HorizontalAlignment="Stretch" Margin="596,56,0,345" VerticalAlignment="Stretch"/>
+        <CheckBox Name="ShouldWindowClose" FontSize="12" Height="20" Width="200" Foreground="White" Grid.Column="1" Content="Keep Window open after Round?" HorizontalAlignment="Stretch" Margin="596,56,0,345" VerticalAlignment="Stretch" IsChecked="True"/>
 
 
 
